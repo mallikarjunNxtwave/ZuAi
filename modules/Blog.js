@@ -1,4 +1,4 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema({
     username: {
@@ -17,9 +17,12 @@ const blogSchema = new mongoose.Schema({
     createdDate: {
         type: Date,
         required: true
+    },
+    imageUrl: {
+        type: String
     }
 })
 
-const Blog = mongoose.modal('blog', blogSchema);
+const Blog = mongoose.model('blog', blogSchema);
 
 module.exports = Blog;

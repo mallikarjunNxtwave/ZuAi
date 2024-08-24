@@ -3,7 +3,8 @@ const dotEnv = require("dotenv");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const userRouts = require('./routes/userRoutes')
+const userRouts = require('./routes/userRoutes');
+const blogRoutes = require('./routes/blogRoutes');
 const PORT = 5001;
 
 const app = express();
@@ -19,6 +20,8 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(error => console.log(error));
 
 app.use('/', userRouts);
+
+app.use('/', blogRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server Running at ${PORT}`)
